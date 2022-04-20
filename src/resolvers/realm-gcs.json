@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cool-agility-342801",
+  "private_key_id": "26b0969a24348d3b1375b0f16d805dd7b3de96eb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPR457yXTLzNBX\nEuBEJneviAFw/zgeoUW8GKwn+lslSRdB8+eEaL42yYtECERHZuEp3zZU2hs9k5lS\nuhBLor6pF8p8TBevEl5be8kX7qb7OT6siN2QBq0QaJIFdIuH3TcqZ3cqSHKAcMBg\niRld6IvQIZm40t1W9H987FRUhYUCl4ay4E17qoPXZulN2BMjR3VyRWi2kebJkDLI\nvGKQMc7bBgyHzQQt/BLAQ/YtlUGQrjvF3RNK+0Y73MNPIEu3UWr4y/dV70CZtZdH\nKP52tUyJ1M67RaAhzmqZ/htHWr37qW3Mjuw0YsglXyR90ReF9+112dxFXB38RoGl\nfC5fDp3xAgMBAAECggEAAhAKusWe8WuTg9ekFAQz+whbR1DAMgyAdqY3ibBOmY44\nJTJe/UIo6RT+sJ8fxXwgb9EQ/S2ByY4/Si5K0jiHitmPQhxkZ0bDWfK0kMCRuHyc\ngzgGHb717ZdfeJ7CcrLWBTMsDDzV/Ybhtd7iDz1XWCtgGGbqHUmSk9+ALqp4z9/w\njjNZcMh4ylPocPnOu18mhmmbbyvyR5JWPOPsC71ac8iIEfi+zvBHj7gEj8dNWUzu\nylNFia0KnHeGgK9v6rj94fKjvVVGTMUYMrmeuf47SbmcNeQCv+eyUp88VQkwruY2\nhqVjL5/qzU5W3oe2ZiZT6mccva/EAILkFBmU89W5VwKBgQDtMoPAhOnYBIyOlaOD\nEMHXBYekIi5AI96Q3dRUXYZjjRQzxL3IVgv5sgRmWr6NXBQqscRJXAcVERsCEFxC\nQBNWPfy/lv6emEZFRNcxjVviWFZillhBS8JAqn8Vic+/Hv+XKGWZ9xz61vU2tFHw\n8TOSt8XF1mHt6enl/IrXVOBpfwKBgQDfteozi0wPBKCccybfjmnriJ/+wxUpne2i\ne48rtKOfuFQrY8+IYa8iBO1YjkNzyfuToHhcLJ3aFfbTJ14y4Zc2DcHMREQw7/Fk\nynRMHWCAQgU4ETanjdd5biHQDWpk87upr4N5fQT/IurfxbxIlvfAUboj29anjmFZ\nQlytsURQjwKBgGLH/8CEWdKBinuy68agiulePy/moDZL+duA1nVQAbChx0EL9TFi\nTFhvf4+UyPib2TYylBks/zIRzpqcb5+TiboH1KOBYYZwygr88VWMljB8M3WZQSXo\nQ/ykRIqWuvLQGQc9ZpqpI+N+894VWG6sNJssd2u9rUjkemkyNCwbB95HAoGBAM6p\nAMfJAORGxBCDGAAhUZvyRMtWcDBX4nTda+9WGmmsIKVMuSUmCGGG57ONCKboim1g\nKpAL727OJ4v8rDqYx9V5c/Q9hDkpD3iqxjCiWslhM+0Nic3TbKCSqs3F9ul3d39T\n0kLiyUDggtVhl4P/YrPZS/lgVrXHBAsvEOqr/Y3lAoGAHtIob60jlh2lybGh7JVf\nHIklBTUQ7UG3X3lDFsCfJKUAMM+EaDsnRIefzwmlhtiLEi85Er0kSrHX80rEi33D\nJ5gVmm5kpvY92eDAeodbiAJu2KeS64QcPTj6A3grzxXnMU1U8XIqSGTNQSpi4tkG\n6QXeXFYHbpZmIO7NPrIKZ9Y=\n-----END PRIVATE KEY-----\n",
+  "client_email": "realm-api@cool-agility-342801.iam.gserviceaccount.com",
+  "client_id": "116357765660182680103",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/realm-api%40cool-agility-342801.iam.gserviceaccount.com"
+}
