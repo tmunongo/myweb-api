@@ -8,6 +8,9 @@ module.exports = {
   post: async (parent, args, { models }) => {
     return await models.Post.findById(args.id)
   },
+  postBySlug: async (parent, args, { models }) => {
+    return await models.Post.findOne({ slug: args.slug })
+  },
   user: async (parent, args, { models }) => {
     return await models.User.findOne({ username: args.username })
   },

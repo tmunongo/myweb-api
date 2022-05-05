@@ -3,10 +3,13 @@ const { gql } = require('apollo-server-express')
 module.exports = gql`
   scalar DateTime
   scalar Upload
+  scalar JSON
   type Post {
     id: ID!
     title: String!
+    slug: String!
     blurb: String!
+    caption: String!
     category: String!
     content: String!
     author: User!
@@ -39,6 +42,7 @@ module.exports = gql`
     posts: [Post!]!
     users: [User!]!
     post(id: ID!): Post!
+    postBySlug(slug: String!): Post!
     user(username: String!): User
     me: User!
     PostFeed(cursor: String): PostFeed
@@ -46,20 +50,24 @@ module.exports = gql`
   }
   type Mutation {
     newPost(
-      title: String!
       blurb: String!
+      caption: String!
       category: String!
       content: String!
       coverUrl: String!
+      slug: String!
+      title: String!
     ): Post!
     newComment(content: String!): Comment!
     updatePost(
       id: ID!
       title: String
+      caption: String
       blurb: String
       category: String
       content: String
       coverUrl: String
+      slug: String
     ): Post!
     updateUser(
       id: ID!

@@ -18,11 +18,19 @@ const postSchema = new mongoose.Schema(
     coverUrl: {
       type: String,
     },
+    caption: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,
     },
     blurb: {
+      type: String,
+      required: true,
+    },
+    slug: {
       type: String,
       required: true,
     },

@@ -7,6 +7,7 @@ const typeDefs = require('./schema')
 const cors = require('cors')
 const resolvers = require('./resolvers')
 const jwt = require('jsonwebtoken')
+const bodyParser = require('body-parser')
 const depthLimit = require('graphql-depth-limit')
 const { createComplexityLimitRule } = require('graphql-validation-complexity')
 
@@ -46,6 +47,8 @@ const common = new ApolloServer({
 })
 
 app.use(cors())
+app.use(bodyParser.json({ limit: '20mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }))
 
 common.start().then((res) => {
   common.applyMiddleware({ app, path: '/realm-api' })

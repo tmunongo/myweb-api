@@ -9,7 +9,7 @@ const gravatar = require('../util/gravatar')
 module.exports = {
   newPost: async (
     parent,
-    { title, blurb, category, content, coverUrl },
+    { title, blurb, category, content, coverUrl, slug, caption },
     { models, user }
   ) => {
     if (!user) {
@@ -36,6 +36,8 @@ module.exports = {
       category: category,
       blurb: blurb,
       content: content,
+      slug: slug,
+      caption: caption,
       author: mongoose.Types.ObjectId(user.id),
       coverUrl: result.url,
     })
@@ -132,7 +134,7 @@ module.exports = {
   },
   updatePost: async (
     parent,
-    { content, category, blurb, title, id },
+    { content, category, blurb, title, id, slug, caption },
     { models, user }
   ) => {
     if (!user) {
@@ -155,6 +157,8 @@ module.exports = {
           category,
           blurb,
           title,
+          slug,
+          caption,
         },
       },
       {
