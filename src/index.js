@@ -47,8 +47,8 @@ const common = new ApolloServer({
 })
 
 app.use(cors())
-app.use(bodyParser.json({ limit: '20mb' }))
-app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }))
+// app.use(bodyParser.json({ limit: '20mb' }))
+// app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }))
 
 common.start().then((res) => {
   common.applyMiddleware({ app, path: '/realm-api' })
