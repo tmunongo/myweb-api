@@ -23,7 +23,6 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-iso-date": "^3.6.1",
     "graphql-type-json": "^0.3.2",
-    "graphql-upload": "^13.0.0",
     "graphql-validation-complexity": "^0.4.2",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
