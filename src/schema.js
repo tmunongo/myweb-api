@@ -2,7 +2,6 @@ const { gql } = require('apollo-server-express')
 
 module.exports = gql`
   scalar DateTime
-  scalar JSON
   type Post {
     id: ID!
     title: String!
