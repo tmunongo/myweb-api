@@ -2,7 +2,6 @@ const { gql } = require('apollo-server-express')
 
 module.exports = gql`
   scalar DateTime
-  scalar Upload
   scalar JSON
   type Post {
     id: ID!
@@ -99,10 +98,5 @@ module.exports = gql`
     comments: [Comment]!
     commentCursor: String!
     commentNextPage: Boolean!
-  }
-  type File {
-    filename: String!
-    mimetype: String!
-    encoding: String!
   }
 `
