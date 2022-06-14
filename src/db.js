@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-DB_HOST = process.env.DB_HOST
-
 module.exports = {
   connect: (DB_HOST) => {
     mongoose.connect(DB_HOST)
