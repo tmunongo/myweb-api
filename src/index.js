@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const depthLimit = require('graphql-depth-limit')
 const { createComplexityLimitRule } = require('graphql-validation-complexity')
+const { DateTimeTypeDefinition } = 'graphql-scalars'
 
 const getUser = (token) => {
   if (token) {

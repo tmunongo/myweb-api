@@ -3,8 +3,7 @@ const Mutation = require('./mutation')
 const Post = require('./post')
 const User = require('./user')
 const Comment = require('./comment')
-const { GraphQLDateTime } = require('graphql-iso-date')
-const GraphQLJSON = require('graphql-type-json')
+const { DateTimeResolver } = require('graphql-scalars')
 
 module.exports = {
   Query,
@@ -12,6 +11,5 @@ module.exports = {
   Post,
   User,
   Comment,
-  DateTime: GraphQLDateTime,
-  JSON: GraphQLJSON,
+  DateTime: DateTimeResolver,
 }
