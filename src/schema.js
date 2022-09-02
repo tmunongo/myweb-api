@@ -7,7 +7,7 @@ module.exports = gql`
     title: String!
     slug: String!
     blurb: String!
-    caption: String!
+    caption: String
     category: String!
     content: String!
     author: User!
@@ -49,7 +49,7 @@ module.exports = gql`
   type Mutation {
     newPost(
       blurb: String!
-      caption: String!
+      caption: String
       category: String!
       content: String!
       coverUrl: String!
