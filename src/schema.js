@@ -41,6 +41,7 @@ module.exports = gql`
     users: [User!]!
     post(id: ID!): Post!
     postBySlug(slug: String!): Post!
+    postsByTag(tag: String!): [Post!]!
     user(username: String!): User
     me: User!
     PostFeed(cursor: String): PostFeed
