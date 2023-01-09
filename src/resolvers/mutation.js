@@ -8,6 +8,7 @@ const {
 require("dotenv").config();
 const cloudinary = require("cloudinary");
 const gravatar = require("../util/gravatar");
+const { readTime } = require("../util/readTime");
 
 module.exports = {
   newPost: async (
@@ -34,26 +35,29 @@ module.exports = {
     } catch (e) {
       return `Image could not be uploaded:${e.message}`;
     }
+    rT = readTime(content);
     return await models.Post.create({
       title: title,
       category: category,
       blurb: blurb,
       content: content,
+      readTime: rT,
       slug: slug,
       caption: caption,
       author: mongoose.Types.ObjectId(user.id),
       coverUrl: result.url,
+      userId: mongoose.Types.ObjectId(user.id),
     });
   },
-  newComment: async (parent, args, { models, user }) => {
-    if (!user) {
-      throw new AuthenticationError("You must be signed in to post a comment");
-    }
-    return await models.Comment.create({
-      content: args.content,
-      author: mongoose.Types.ObjectId(user.id),
-    });
-  },
+  // newComment: async (parent, args, { models, user }) => {
+  //   if (!user) {
+  //     throw new AuthenticationError("You must be signed in to post a comment");
+  //   }
+  //   return await models.Comment.create({
+  //     content: args.content,
+  //     author: mongoose.Types.ObjectId(user.id),
+  //   });
+  // },
   deletePost: async (parent, { id }, { models, user }) => {
     //if not user, auth error
     if (!user) {
@@ -117,26 +121,26 @@ module.exports = {
       }
     );
   },
-  deleteComment: async (parent, { id }, { models, user }) => {
-    if (!user) {
-      throw new AuthenticationError("You must be signed in to delete");
-    }
-    const post = await models.Comment.findById(id);
-    if (
-      (comment && String(comment.author)) ||
-      (comment && String(post.author) !== user.id)
-    ) {
-      throw new ForbiddenError(
-        "You do not have the requisite permission for this action"
-      );
-    }
-    try {
-      await post.remove();
-      return true;
-    } catch (err) {
-      return false;
-    }
-  },
+  // deleteComment: async (parent, { id }, { models, user }) => {
+  //   if (!user) {
+  //     throw new AuthenticationError("You must be signed in to delete");
+  //   }
+  //   const post = await models.Comment.findById(id);
+  //   if (
+  //     (comment && String(comment.author)) ||
+  //     (comment && String(post.author) !== user.id)
+  //   ) {
+  //     throw new ForbiddenError(
+  //       "You do not have the requisite permission for this action"
+  //     );
+  //   }
+  //   try {
+  //     await post.remove();
+  //     return true;
+  //   } catch (err) {
+  //     return false;
+  //   }
+  // },
   updatePost: async (
     parent,
     { content, category, blurb, title, id, slug, caption },
@@ -260,49 +264,49 @@ module.exports = {
       );
     }
   },
-  toggleCommentFavorite: async (parent, { id }, { models, user }) => {
-    //if no user context passed, throw auth error
-    if (!user) {
-      throw new AuthenticationError("Must be logged in for this action");
-    }
-    //check if user has favorited post already
-    let commentCheck = await models.Comment.findByOne(id);
-    const hasUser = commentCheck.favoritedBy.indexOf(user.id);
-    //if user exists in list, pull them from list and -1
-    if (hasUser >= 0) {
-      return await models.Comment.findOneAndUpdate(
-        id,
-        {
-          $pull: {
-            favoritedBy: mongoose.Types.ObjectID(user.id),
-          },
-          $inc: {
-            favoriteCount: -1,
-          },
-        },
-        {
-          //set new to true to update doc
-          new: true,
-        }
-      );
-    } else {
-      //if user does not exist in list, add them to list and increment by one
-      return await models.Comment.findOneAndUpdate(
-        id,
-        {
-          $push: {
-            favoritedBy: mongoose.Types.ObjectID(user.id),
-          },
-          $inc: {
-            favoriteCount: 1,
-          },
-        },
-        {
-          new: true,
-        }
-      );
-    }
-  },
+  // toggleCommentFavorite: async (parent, { id }, { models, user }) => {
+  //   //if no user context passed, throw auth error
+  //   if (!user) {
+  //     throw new AuthenticationError("Must be logged in for this action");
+  //   }
+  //   //check if user has favorited post already
+  //   let commentCheck = await models.Comment.findByOne(id);
+  //   const hasUser = commentCheck.favoritedBy.indexOf(user.id);
+  //   //if user exists in list, pull them from list and -1
+  //   if (hasUser >= 0) {
+  //     return await models.Comment.findOneAndUpdate(
+  //       id,
+  //       {
+  //         $pull: {
+  //           favoritedBy: mongoose.Types.ObjectID(user.id),
+  //         },
+  //         $inc: {
+  //           favoriteCount: -1,
+  //         },
+  //       },
+  //       {
+  //         //set new to true to update doc
+  //         new: true,
+  //       }
+  //     );
+  //   } else {
+  //     //if user does not exist in list, add them to list and increment by one
+  //     return await models.Comment.findOneAndUpdate(
+  //       id,
+  //       {
+  //         $push: {
+  //           favoritedBy: mongoose.Types.ObjectID(user.id),
+  //         },
+  //         $inc: {
+  //           favoriteCount: 1,
+  //         },
+  //       },
+  //       {
+  //         new: true,
+  //       }
+  //     );
+  //   }
+  // },
   toggleRole: async (parent, { id }, { models, user }) => {
     if (!user && String(user.role) !== "admin") {
       throw new AuthenticationError(

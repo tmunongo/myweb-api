@@ -59,35 +59,35 @@ module.exports = {
       hasNextPage,
     };
   },
-  CommentFeed: async (parent, { commentCursor }, { models }) => {
-    // limit is 5 items
-    const commentLimit = 5;
-    //next page false by default
-    const commentNextPage = false;
-    // set cursor query
-    let commentCursorQuery = {};
-    //if there is a cursor, find post with obj id less than it
-    if (commentCursor) {
-      commentCursorQuery = { _id: { $lt: commentCursor } };
-    }
-    //find limit + 1 of db posts, newest to oldest
-    let posts = await models.Post.find(commentCursorQuery)
-      .sort({ _id: -1 })
-      .limit(commentLimit + 1);
+  // CommentFeed: async (parent, { commentCursor }, { models }) => {
+  //   // limit is 5 items
+  //   const commentLimit = 5;
+  //   //next page false by default
+  //   const commentNextPage = false;
+  //   // set cursor query
+  //   let commentCursorQuery = {};
+  //   //if there is a cursor, find post with obj id less than it
+  //   if (commentCursor) {
+  //     commentCursorQuery = { _id: { $lt: commentCursor } };
+  //   }
+  //   //find limit + 1 of db posts, newest to oldest
+  //   let posts = await models.Post.find(commentCursorQuery)
+  //     .sort({ _id: -1 })
+  //     .limit(commentLimit + 1);
 
-    //if more posts than limit, commentNextPage is true
-    if (posts.length > commentLimit) {
-      commentNextPage = true;
-      posts = posts.slice(0, -1);
-    }
+  //   //if more posts than limit, commentNextPage is true
+  //   if (posts.length > commentLimit) {
+  //     commentNextPage = true;
+  //     posts = posts.slice(0, -1);
+  //   }
 
-    //set new cursor to mongo obj id of last item
-    const newCommentCursor = posts[posts.length - 1]._id;
+  //   //set new cursor to mongo obj id of last item
+  //   const newCommentCursor = posts[posts.length - 1]._id;
 
-    return {
-      posts,
-      commentCursor: newCommentCursor,
-      commentNextPage,
-    };
-  },
+  //   return {
+  //     posts,
+  //     commentCursor: newCommentCursor,
+  //     commentNextPage,
+  //   };
+  // },
 };

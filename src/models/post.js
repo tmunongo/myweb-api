@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
   {
@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
     coverUrl: {
@@ -37,18 +37,21 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    readTime: {
+      type: Number,
+    },
     favoritedBy: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
       },
     ],
   },
   {
     timestamps: true,
   }
-)
+);
 
-const Post = mongoose.model('Post', postSchema)
+const Post = mongoose.model("Post", postSchema);
 
-module.exports = Post
+module.exports = Post;

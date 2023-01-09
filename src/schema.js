@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express')
+const { gql } = require("apollo-server-express");
 
 module.exports = gql`
   scalar DateTime
@@ -16,15 +16,16 @@ module.exports = gql`
     updatedAt: DateTime!
     favoriteCount: Int!
     favoritedBy: [User!]
+    readTime: Int
   }
-  type Comment {
-    id: ID!
-    author: User!
-    content: String!
-    createdAt: DateTime!
-    favoriteCount: Int!
-    favoritedBy: [User!]
-  }
+  # type Comment {
+  #   id: ID!
+  #   author: User!
+  #   content: String!
+  #   createdAt: DateTime!
+  #   favoriteCount: Int!
+  #   favoritedBy: [User!]
+  # }
   type User {
     id: ID!
     fullname: String!
@@ -33,7 +34,7 @@ module.exports = gql`
     role: String!
     avatar: String
     posts: [Post!]!
-    comments: [Comment!]!
+    # comments: [Comment!]!
     favorites: [Post!]!
   }
   type Query {
@@ -45,7 +46,7 @@ module.exports = gql`
     user(username: String!): User
     me: User!
     PostFeed(cursor: String): PostFeed
-    CommentFeed(cursor: String): CommentFeed
+    # CommentFeed(cursor: String): CommentFeed
   }
   type Mutation {
     newPost(
@@ -56,8 +57,9 @@ module.exports = gql`
       coverUrl: String!
       slug: String!
       title: String!
+      readTime: Int
     ): Post!
-    newComment(content: String!): Comment!
+    # newComment(content: String!): Comment!
     updatePost(
       id: ID!
       title: String
@@ -67,6 +69,7 @@ module.exports = gql`
       content: String
       coverUrl: String
       slug: String
+      readTime: Int
     ): Post!
     updateUser(
       id: ID!
@@ -75,7 +78,7 @@ module.exports = gql`
       username: String!
     ): User!
     deletePost(id: ID!): Boolean!
-    deleteComment(id: ID!): Boolean!
+    # deleteComment(id: ID!): Boolean!
     deleteUser(id: ID!): Boolean!
     signUp(
       username: String!
@@ -86,7 +89,7 @@ module.exports = gql`
     ): String!
     signIn(username: String, email: String, password: String!): String!
     toggleFavorite(id: ID!): Post!
-    toggleCommentFavorite(id: ID!): Comment!
+    # toggleCommentFavorite(id: ID!): Comment!
     toggleRole(id: ID!): Boolean!
   }
   type PostFeed {
@@ -94,9 +97,9 @@ module.exports = gql`
     cursor: String!
     hasNextPage: Boolean!
   }
-  type CommentFeed {
-    comments: [Comment]!
-    commentCursor: String!
-    commentNextPage: Boolean!
-  }
-`
+  # type CommentFeed {
+  #   comments: [Comment]!
+  #   commentCursor: String!
+  #   commentNextPage: Boolean!
+  # }
+`;

@@ -1,11 +1,11 @@
-const Post = require('./post')
-const User = require('./user')
-const Comment = require('./comment')
+const Post = require("./post");
+const User = require("./user");
+// const Comment = require('./comment')
 
 const models = {
   Post,
   User,
-  Comment,
-}
+  // Comment,
+};
 
-module.exports = models
+module.exports = models;
